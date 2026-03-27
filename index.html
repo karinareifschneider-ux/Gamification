@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brindiamo al Successo | Daydrink Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fdfcf9;
+            --text: #1a1a1a;
+            --accent: #bc6c25; /* Terracotta */
+            --subtle: #606c38; /* Olive */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        header {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(253, 252, 249, 0.4), rgba(253, 252, 249, 0.8)), 
+                        url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.8rem, 10vw, 5rem);
+            margin: 0;
+            color: var(--text);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .motto {
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 850px;
+            margin: -100px auto 100px;
+            background: var(--white);
+            padding: 80px 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
+            position: relative;
+            z-index: 10;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 80px;
+            font-weight: 300;
+            color: #444;
+        }
+
+        .intro strong {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Timetable Section */
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .schedule {
+            margin-bottom: 80px;
+        }
+
+        .row {
+            display: flex;
+            padding: 30px 0;
+            border-bottom: 1px solid #f2f2f2;
+            transition: background 0.3s ease;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            width: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--subtle);
+            padding-top: 6px;
+        }
+
+        .event-content {
+            flex: 1;
+        }
+
+        .event-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin: 0;
+            color: var(--text);
+        }
+
+        .event-desc {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .info-card {
+            padding: 40px;
+            background: #fafaf8;
+            border: 1px solid #efefec;
+        }
+
+        .info-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: #555;
+        }
+
+        /* CTA */
+        .cta-wrapper {
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--text);
+            color: var(--white);
+            padding: 22px 50px;
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: 1px solid var(--text);
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--text);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            opacity: 0.4;
+            text-transform: uppercase;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 650px) {
+            .container {
+                margin-top: -40px;
+                padding: 60px 25px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .row {
+                flex-direction: column;
+            }
+            .time {
+                margin-bottom: 10px;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Brindiamo al Successo</h1>
+        <div class="motto">Daydrink Experience</div>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            Ein Tag. Zwölf Freunde. Ein gemeinsames Versprechen an die gute Zeit.<br> 
+            Keine Hektik, keine Regeln, nur <strong>Sprezzatura</strong>.
+        </div>
+
+        <div class="section-title">Programma</div>
+
+        <div class="schedule">
+            <div class="row">
+                <div class="time">10:00</div>
+                <div class="event-content">
+                    <div class="event-title">Il Grande Inizio</div>
+                    <div class="event-desc">Espresso, Cornetti & Early Spirits</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="time">12:00</div>
+                <div class="event-content">
+                    <div class="event-title">Lo Scatto Mentale</div>
+                    <div class="event-desc">Ein Test für Verstand und Familienehre</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="time">14:30</div>
+                <div class="event-content">
+                    <div class="event-title">Birra Moretti Edizione</div>
+                    <div class="event-desc">Sportliche Eleganz unter freiem Himmel</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="time">18:00</div>
+                <div class="event-content">
+                    <div class="event-title">La Cena di Famiglia</div>
+                    <div class="event-desc">Handgemachte Kulinarik & Siegerehrung</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="time">20:00</div>
+                <div class="event-content">
+                    <div class="event-title">Programma Libero</div>
+                    <div class="event-desc">Italo-Disco & Open End</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>Dresscode</h3>
+                <p>Amalfi Coast Chic. Leinen, warme Erdtöne, dunkle Sonnenbrillen. Wir feiern den Stil des Augenblicks.</p>
+            </div>
+            <div class="info-card">
+                <h3>Le Missioni</h3>
+                <p>Jeder Gast erhält sein versiegeltes Dossier vor Ort. Handle diskret. Sammle Punkte. Werde zur Legende des Tages.</p>
+            </div>
+        </div>
+
+        <div class="cta-wrapper">
+            <a href="https://wa.me/" class="btn">RESERVIER DEINEN PLATZ</a>
+        </div>
+    </div>
+
+    <footer>
+        MILANO • ROMA • NOSTRE MURA • 2024
+    </footer>
+
+</body>
+</html>
+
