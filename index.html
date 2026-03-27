@@ -1,298 +1,183 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brindiamo al Successo | Daydrink Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #fdfcf9;
-            --text: #1a1a1a;
-            --accent: #bc6c25; /* Terracotta */
-            --subtle: #606c38; /* Olive */
-            --white: #ffffff;
-        }
+import React, { useState } from 'react';
+import { GlassWater, UtensilsCrossed, MapPin, Clock, Calendar, Star, Users } from 'lucide-react';
 
-        * {
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
+const App = () => {
+  const [activeDay, setActiveDay] = useState('venerdi');
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
+  const bordeaux = "#3a0303"; // Tiefes, dunkles Weinrot
+  const butter = "#FFEDD8";   // Buttergelb Akzente
+  const charcoal = "#120101"; // Fast Schwarz für maximale Tiefe
 
-        /* Hero Section */
-        header {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(253, 252, 249, 0.4), rgba(253, 252, 249, 0.8)), 
-                        url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?auto=format&fit=crop&w=1500&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-        }
+  const days = {
+    venerdi: {
+      title: "Venerdì | L'Arrivo",
+      subtitle: "Der Auftakt unter Freunden",
+      content: (
+        <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6">
+            <Clock className="text-[#FFEDD8] shrink-0 mt-1" size={18} />
+            <div>
+              <h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">16:00 – Partenza al Ufficio</h3>
+              <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light">
+                Wir versammeln die Flotte am Office. Ein letzter Espresso, dann setzen wir uns in Bewegung Richtung Osten. 
+                Die Dienstwagen bilden unser Geleit nach Soběšice.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6">
+            <MapPin className="text-[#FFEDD8] shrink-0 mt-1" size={18} />
+            <div>
+              <h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">Benvenuti in Cechia</h3>
+              <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light">
+                Nach dem Check-In und der privaten Zimmerverteilung lassen wir den Staub der Straße hinter uns. 
+                Die Villa gehört uns – Zeit für das erste Glas Vino in der Abendsonne.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6">
+            <UtensilsCrossed className="text-[#FFEDD8] shrink-0 mt-1" size={18} />
+            <div>
+              <h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">Cena e Convivialità</h3>
+              <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light">
+                Der erste Abend steht im Zeichen der Gemeinschaft. Wir entfachen das Feuer am Grill, 
+                bereiten gemeinsam frische Salate zu und genießen die erste Nacht in Tschechien. 
+                Ankommen, gemeinsam anstoßen, genießen.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    sabato: {
+      title: "Sabato | Il Sabato Italiano",
+      subtitle: "Gamification trifft Dolce Vita",
+      content: (
+        <div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="bg-[#2a0202] p-8 border border-[#FFEDD8]/5 rounded-sm mb-4">
+            <p className="text-[#FFEDD8] italic text-center font-serif text-lg">
+              "Pasta, Spritz und der unbedingte Wille zum gemeinsamen Sieg."
+            </p>
+          </div>
+          <div className="grid gap-12">
+            <div className="flex gap-8">
+              <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">10:00</span>
+              <div>
+                <h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Briefing & Cornetto</h4>
+                <p className="text-[#FFEDD8]/60 font-light">Ausgabe der Secret Missions. Ab jetzt ist jeder sein eigener Regisseur im Spiel um Prestige und Punkte.</p>
+              </div>
+            </div>
+            <div className="flex gap-8">
+              <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">12:00</span>
+              <div>
+                <h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Lo Scatto Mentale</h4>
+                <p className="text-[#FFEDD8]/60 font-light">Ein intellektuelles Duell um die Ehre. Strategie und kühles Blut sind der Weg zur Legende.</p>
+              </div>
+            </div>
+            <div className="flex gap-8">
+              <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">14:30</span>
+              <div>
+                <h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Olimpiadi della Birra</h4>
+                <p className="text-[#FFEDD8]/60 font-light">Moretti-Aperitivo im Garten. Flunkyball mit italienischer Raffinesse und sportlichem Ehrgeiz.</p>
+              </div>
+            </div>
+            <div className="flex gap-8">
+              <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">18:00</span>
+              <div>
+                <h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Gran Gala di Pasta</h4>
+                <p className="text-[#FFEDD8]/60 font-light">Das finale Festmahl. Auswertung der Missionen und Krönung des Champions bei reichlich Vino, Pasta und Italo-Vibes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    domenica: {
+      title: "Domenica | La Partenza",
+      subtitle: "Der sanfte Abschied",
+      content: (
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 text-center py-16">
+          <Calendar className="text-[#FFEDD8] mx-auto mb-6 opacity-30" size={64} strokeWidth={1} />
+          <h3 className="text-[#FFEDD8] font-serif text-4xl mb-4">Check-Out & Saluti</h3>
+          <p className="text-[#FFEDD8]/60 max-w-lg mx-auto leading-relaxed font-light text-lg">
+            Wir lassen das Wochenende Revue passieren. Nach einem letzten gemeinsamen Espresso 
+            räumen wir gegen Mittag die Villa und treten die Heimreise an. 
+            Ritorno a casa mit neuen Geschichten im Gepäck.
+          </p>
+        </div>
+      )
+    }
+  };
 
-        h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.8rem, 10vw, 5rem);
-            margin: 0;
-            color: var(--text);
-            letter-spacing: -1px;
-            line-height: 1;
-        }
+  return (
+    <div className="min-h-screen font-sans selection:bg-[#FFEDD8] selection:text-[#3a0303]" style={{ backgroundColor: charcoal }}>
+      {/* Hero Header */}
+      <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          {/* New Image: People toasting in a dark setting */}
+          <img 
+            src="https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&w=1500&q=80" 
+            alt="Freunde beim Anstoßen" 
+            className="w-full h-full object-cover opacity-50 grayscale-[0.2]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#120101]" />
+        </div>
+        
+        <div className="relative z-10 text-center px-4">
+          <span className="text-[#FFEDD8] uppercase tracking-[0.7em] text-[10px] md:text-xs font-bold mb-6 block opacity-70">Soběšice // Aprile 2026</span>
+          <h1 className="text-[#FFEDD8] font-serif text-7xl md:text-[10rem] tracking-tighter mb-2 leading-none">Brindiamo</h1>
+          <h2 className="text-[#FFEDD8]/60 font-serif text-3xl md:text-6xl italic tracking-wider">al Successo</h2>
+        </div>
+      </div>
 
-        .motto {
-            font-size: 1.1rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        /* Content Container */
-        .container {
-            max-width: 850px;
-            margin: -100px auto 100px;
-            background: var(--white);
-            padding: 80px 50px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.04);
-            position: relative;
-            z-index: 10;
-        }
-
-        .intro {
-            text-align: center;
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-bottom: 80px;
-            font-weight: 300;
-            color: #444;
-        }
-
-        .intro strong {
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        /* Timetable Section */
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
-        .schedule {
-            margin-bottom: 80px;
-        }
-
-        .row {
-            display: flex;
-            padding: 30px 0;
-            border-bottom: 1px solid #f2f2f2;
-            transition: background 0.3s ease;
-        }
-
-        .row:last-child {
-            border-bottom: none;
-        }
-
-        .time {
-            width: 100px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--subtle);
-            padding-top: 6px;
-        }
-
-        .event-content {
-            flex: 1;
-        }
-
-        .event-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.6rem;
-            margin: 0;
-            color: var(--text);
-        }
-
-        .event-desc {
-            font-size: 0.85rem;
-            color: #999;
-            margin-top: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* Info Cards */
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .info-card {
-            padding: 40px;
-            background: #fafaf8;
-            border: 1px solid #efefec;
-        }
-
-        .info-card h3 {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.6rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-
-        .info-card p {
-            font-size: 0.95rem;
-            margin: 0;
-            color: #555;
-        }
-
-        /* CTA */
-        .cta-wrapper {
-            text-align: center;
-            margin-top: 80px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--text);
-            color: var(--white);
-            padding: 22px 50px;
-            text-decoration: none;
-            letter-spacing: 3px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            border: 1px solid var(--text);
-        }
-
-        .btn:hover {
-            background: transparent;
-            color: var(--text);
-            transform: translateY(-3px);
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            opacity: 0.4;
-            text-transform: uppercase;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 650px) {
-            .container {
-                margin-top: -40px;
-                padding: 60px 25px;
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            .row {
-                flex-direction: column;
-            }
-            .time {
-                margin-bottom: 10px;
-            }
-            h1 {
-                font-size: 3rem;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>Brindiamo al Successo</h1>
-        <div class="motto">Daydrink Experience</div>
-    </header>
-
-    <div class="container">
-        <div class="intro">
-            Ein Tag. Zwölf Freunde. Ein gemeinsames Versprechen an die gute Zeit.<br> 
-            Keine Hektik, keine Regeln, nur <strong>Sprezzatura</strong>.
+      {/* Navigation */}
+      <div className="max-w-4xl mx-auto px-4 -mt-16 relative z-20">
+        <div className="bg-[#3a0303] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-[#FFEDD8]/5 p-1 flex justify-between rounded-sm">
+          {Object.keys(days).map((day) => (
+            <button
+              key={day}
+              onClick={() => setActiveDay(day)}
+              className={`flex-1 py-6 text-center transition-all duration-500 uppercase tracking-[0.4em] text-[9px] md:text-xs font-black ${
+                activeDay === day ? "bg-[#FFEDD8] text-[#3a0303] shadow-lg" : "text-[#FFEDD8] hover:bg-[#4a0404]"
+              }`}
+            >
+              {day === 'venerdi' ? 'Venerdì' : day === 'sabato' ? 'Sabato' : 'Domenica'}
+            </button>
+          ))}
         </div>
 
-        <div class="section-title">Programma</div>
+        {/* Content Box */}
+        <div className="mt-20 bg-[#1a0101]/60 border border-[#FFEDD8]/5 p-8 md:p-24 mb-24 shadow-2xl backdrop-blur-md">
+          <div className="mb-20 border-b border-[#FFEDD8]/10 pb-12">
+            <h2 className="text-[#FFEDD8] font-serif text-4xl md:text-7xl mb-4 tracking-tighter">{days[activeDay].title}</h2>
+            <p className="text-[#FFEDD8]/20 uppercase tracking-[0.5em] text-[10px] md:text-xs font-bold">{days[activeDay].subtitle}</p>
+          </div>
+          
+          {days[activeDay].content}
 
-        <div class="schedule">
-            <div class="row">
-                <div class="time">10:00</div>
-                <div class="event-content">
-                    <div class="event-title">Il Grande Inizio</div>
-                    <div class="event-desc">Espresso, Cornetti & Early Spirits</div>
-                </div>
+          {/* Footer Info */}
+          <div className="mt-24 pt-12 border-t border-[#FFEDD8]/5 flex flex-col md:flex-row items-center gap-6">
+            <div className="flex items-center gap-6 text-[#FFEDD8]/40 italic text-sm">
+              <Users size={16} className="text-[#FFEDD8]/20" />
+              <span>Attenzione: Allergien oder kulinarische Wünsche bitte zeitnah bei der Organisation melden.</span>
             </div>
-            <div class="row">
-                <div class="time">12:00</div>
-                <div class="event-content">
-                    <div class="event-title">Lo Scatto Mentale</div>
-                    <div class="event-desc">Ein Test für Verstand und Familienehre</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="time">14:30</div>
-                <div class="event-content">
-                    <div class="event-title">Birra Moretti Edizione</div>
-                    <div class="event-desc">Sportliche Eleganz unter freiem Himmel</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="time">18:00</div>
-                <div class="event-content">
-                    <div class="event-title">La Cena di Famiglia</div>
-                    <div class="event-desc">Handgemachte Kulinarik & Siegerehrung</div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="time">20:00</div>
-                <div class="event-content">
-                    <div class="event-title">Programma Libero</div>
-                    <div class="event-desc">Italo-Disco & Open End</div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="info-grid">
-            <div class="info-card">
-                <h3>Dresscode</h3>
-                <p>Amalfi Coast Chic. Leinen, warme Erdtöne, dunkle Sonnenbrillen. Wir feiern den Stil des Augenblicks.</p>
-            </div>
-            <div class="info-card">
-                <h3>Le Missioni</h3>
-                <p>Jeder Gast erhält sein versiegeltes Dossier vor Ort. Handle diskret. Sammle Punkte. Werde zur Legende des Tages.</p>
-            </div>
+      {/* Page Footer */}
+      <footer className="pb-20 text-center">
+        <div className="flex justify-center items-center gap-10 mb-8 opacity-10">
+          <div className="h-px w-20 bg-[#FFEDD8]" />
+          <span className="text-[#FFEDD8] font-serif italic text-2xl">Sprezzatura</span>
+          <div className="h-px w-20 bg-[#FFEDD8]" />
         </div>
-
-        <div class="cta-wrapper">
-            <a href="https://wa.me/" class="btn">RESERVIER DEINEN PLATZ</a>
-        </div>
+        <p className="text-[#FFEDD8]/10 text-[8px] md:text-[10px] uppercase tracking-[1.2em] font-bold">
+          Tschechien • Soběšice • MMXXVI
+        </p>
+      </footer>
     </div>
+  );
+};
 
-    <footer>
-        MILANO • ROMA • NOSTRE MURA • 2024
-    </footer>
-
-</body>
-</html>
+export default App;
 
