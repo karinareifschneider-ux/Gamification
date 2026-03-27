@@ -1,104 +1,227 @@
-import React, { useState } from 'react'; import { GlassWater, UtensilsCrossed, MapPin, Clock, Calendar, Star, Users } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brindiamo al Successo | Soběšice 2026</title>
+    <!-- Tailwind CSS für das Design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Elegante Schriftarten -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bordeaux: #3a0303;
+            --butter: #FFEDD8;
+            --charcoal: #120101;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--charcoal); 
+            color: var(--butter); 
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .font-serif { font-family: 'DM Serif Display', serif; }
+        
+        /* Tab Logik */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        .tab-btn.active { 
+            background-color: var(--butter); 
+            color: var(--bordeaux); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-const App = () => {
-const [activeDay, setActiveDay] = useState('venerdi');
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-const bordeaux = "#3a0303"; // Tiefes, dunkles Weinrot const butter = "#FFEDD8"; // Buttergelb Akzente const charcoal = "#120101"; // Fast Schwarz für maximale Tiefe
+        .glass-panel {
+            background: rgba(26, 1, 1, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 237, 216, 0.05);
+        }
 
-const days = {
-venerdi: {
-title: "Venerdì | L'Arrivo",
-subtitle: "Der Auftakt unter Freunden",
-content: (
-<div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700"> <div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6"> <Clock className="text-[#FFEDD8] shrink-0 mt-1" size={18} /> <div>
-<h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">16:00 – Partenza al Ufficio</h3> <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light"> Wir versammeln die Flotte am Office. Ein letzter Espresso, dann setzen wir uns in Bewegung Richtung Osten.
-Die Dienstwagen bilden unser Geleit nach Soběšice.
-</p>
-</div>
-</div>
-<div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6"> <MapPin className="text-[#FFEDD8] shrink-0 mt-1" size={18} /> <div>
-<h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">Benvenuti in Cechia</h3> <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light"> Nach dem Check-In und der privaten Zimmerverteilung lassen wir den Staub der Straße hinter uns.
-Die Villa gehört uns – Zeit für das erste Glas Vino in der Abendsonne.
-</p>
-</div>
-</div>
-<div className="flex gap-6 items-start border-l border-[#FFEDD8]/10 pl-6"> <UtensilsCrossed className="text-[#FFEDD8] shrink-0 mt-1" size={18} /> <div>
-<h3 className="text-[#FFEDD8] font-serif text-2xl tracking-tight">Cena e Convivialità</h3> <p className="text-[#FFEDD8]/60 mt-2 leading-relaxed font-light"> Der erste Abend steht im Zeichen der Gemeinschaft. Wir entfachen das Feuer am Grill, bereiten gemeinsam frische Salate zu und genießen die erste Nacht in Tschechien.
-Ankommen, gemeinsam anstoßen, genießen.
-</p>
-</div>
-</div>
-</div>
-)
-},
-sabato: {
-title: "Sabato | Il Sabato Italiano",
-subtitle: "Gamification trifft Dolce Vita",
-content: (
-<div className="space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700"> <div className="bg-[#2a0202] p-8 border border-[#FFEDD8]/5 rounded-sm mb-4"> <p className="text-[#FFEDD8] italic text-center font-serif text-lg"> "Pasta, Spritz und der unbedingte Wille zum gemeinsamen Sieg."
-</p>
-</div>
-<div className="grid gap-12">
-<div className="flex gap-8">
-<span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">10:00</span> <div>
-<h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Briefing & Cornetto</h4> <p className="text-[#FFEDD8]/60 font-light">Ausgabe der Secret Missions. Ab jetzt ist jeder sein eigener Regisseur im Spiel um Prestige und Punkte.</p> </div> </div> <div className="flex gap-8"> <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">12:00</span> <div>
-<h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Lo Scatto Mentale</h4> <p className="text-[#FFEDD8]/60 font-light">Ein intellektuelles Duell um die Ehre. Strategie und kühles Blut sind der Weg zur Legende.</p> </div> </div> <div className="flex gap-8"> <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">14:30</span> <div>
-<h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Olimpiadi della Birra</h4> <p className="text-[#FFEDD8]/60 font-light">Moretti-Aperitivo im Garten. Flunkyball mit italienischer Raffinesse und sportlichem Ehrgeiz.</p> </div> </div> <div className="flex gap-8"> <span className="text-[#FFEDD8] font-serif text-3xl opacity-20 w-16 text-right">18:00</span> <div>
-<h4 className="text-[#FFEDD8] text-xl font-bold uppercase tracking-widest mb-1">Gran Gala di Pasta</h4> <p className="text-[#FFEDD8]/60 font-light">Das finale Festmahl. Auswertung der Missionen und Krönung des Champions bei reichlich Vino, Pasta und Italo-Vibes.</p> </div> </div> </div> </div>
-)
-},
-domenica: {
-title: "Domenica | La Partenza",
-subtitle: "Der sanfte Abschied",
-content: (
-<div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 text-center py-16"> <Calendar className="text-[#FFEDD8] mx-auto mb-6 opacity-30" size={64} strokeWidth={1} />
-<h3 className="text-[#FFEDD8] font-serif text-4xl mb-4">Check-Out & Saluti</h3> <p className="text-[#FFEDD8]/60 max-w-lg mx-auto leading-relaxed font-light text-lg"> Wir lassen das Wochenende Revue passieren. Nach einem letzten gemeinsamen Espresso räumen wir gegen Mittag die Villa und treten die Heimreise an.
-Ritorno a casa mit neuen Geschichten im Gepäck.
-</p>
-</div>
-)
-}
-};
+        /* Sanfter Übergang für Buttons */
+        .tab-btn { transition: all 0.4s ease; }
+    </style>
+</head>
+<body class="antialiased">
 
-return (
-<div className="min-h-screen font-sans selection:bg-[#FFEDD8] selection:text-[#3a0303]" style={{ backgroundColor: charcoal }}>
-{/* Hero Header */}
-<div className="relative h-[70vh] flex items-center justify-center overflow-hidden"> <div className="absolute inset-0 z-0">
-{/* New Image: People toasting in a dark setting */} <img src="https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&w=1500&q=80"
-alt="Freunde beim Anstoßen"
-className="w-full h-full object-cover opacity-50 grayscale-[0.2]"
-/>
-<div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#120101]" /> </div>
+    <!-- Hero Header -->
+    <div class="relative h-[65vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Das neue Bild: Gemeinsames Anstoßen -->
+            <img src="https://images.unsplash.com/photo-1530103043960-ef38714abb15?auto=format&fit=crop&w=1500&q=80" 
+                 alt="Friends Toasting" class="w-full h-full object-cover opacity-40 grayscale-[0.2]">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#120101]"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6">
+            <span class="uppercase tracking-[0.6em] text-[10px] md:text-xs font-black mb-6 block opacity-60">Soběšice // Aprile 2026</span>
+            <h1 class="font-serif text-6xl md:text-[10rem] tracking-tighter mb-2 leading-none">Brindiamo</h1>
+            <h2 class="font-serif text-2xl md:text-6xl italic tracking-widest opacity-40">al Successo</h2>
+        </div>
+    </div>
 
-<div className="relative z-10 text-center px-4"> <span className="text-[#FFEDD8] uppercase tracking-[0.7em] text-[10px] md:text-xs font-bold mb-6 block opacity-70">Soběšice // Aprile 2026</span>
-<h1 className="text-[#FFEDD8] font-serif text-7xl md:text-[10rem] tracking-tighter mb-2 leading-none">Brindiamo</h1>
-<h2 className="text-[#FFEDD8]/60 font-serif text-3xl md:text-6xl italic tracking-wider">al Successo</h2> </div> </div>
+    <!-- Navigation & Tabs -->
+    <div class="max-w-4xl mx-auto px-4 -mt-16 relative z-20 pb-24">
+        
+        <!-- Tab Bar -->
+        <div class="bg-[#3a0303] shadow-2xl p-1 flex justify-between rounded-sm border border-white/5 overflow-hidden">
+            <button onclick="showTab('venerdi')" id="btn-venerdi" class="tab-btn active flex-1 py-6 text-center uppercase tracking-[0.3em] text-[9px] md:text-xs font-black">Venerdì</button>
+            <button onclick="showTab('sabato')" id="btn-sabato" class="tab-btn flex-1 py-6 text-center uppercase tracking-[0.3em] text-[9px] md:text-xs font-black text-[#FFEDD8] hover:bg-[#4a0404]">Sabato</button>
+            <button onclick="showTab('domenica')" id="btn-domenica" class="tab-btn flex-1 py-6 text-center uppercase tracking-[0.3em] text-[9px] md:text-xs font-black text-[#FFEDD8] hover:bg-[#4a0404]">Domenica</button>
+        </div>
 
-{/* Navigation */}
-<div className="max-w-4xl mx-auto px-4 -mt-16 relative z-20"> <div className="bg-[#3a0303] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-[#FFEDD8]/5 p-1 flex justify-between rounded-sm">
-{Object.keys(days).map((day) => (
-<button
-key={day}
-onClick={() => setActiveDay(day)}
-className={`flex-1 py-6 text-center transition-all duration-500 uppercase tracking-[0.4em] text-[9px] md:text-xs font-black ${ activeDay === day ? "bg-[#FFEDD8] text-[#3a0303] shadow-lg" : "text-[#FFEDD8] hover:bg-[#4a0404]"
-}`}
->
-{day === 'venerdi' ? 'Venerdì' : day === 'sabato' ? 'Sabato' : 'Domenica'} </button> ))} </div>
+        <!-- Main Content Box -->
+        <div class="mt-16 glass-panel p-8 md:p-24 shadow-2xl rounded-sm">
+            
+            <!-- FREITAG CONTENT -->
+            <div id="venerdi" class="tab-content active">
+                <div class="mb-16 border-b border-[#FFEDD8]/10 pb-12">
+                    <h2 class="font-serif text-5xl md:text-8xl mb-4 tracking-tighter">Venerdì</h2>
+                    <p class="opacity-20 uppercase tracking-[0.5em] text-[10px] font-black text-[#FFEDD8]">L'Arrivo • Anreise</p>
+                </div>
+                
+                <div class="space-y-12">
+                    <div class="flex gap-8 items-start border-l border-[#FFEDD8]/10 pl-8">
+                        <i data-lucide="clock" class="w-5 h-5 mt-1 opacity-50"></i>
+                        <div>
+                            <h3 class="font-serif text-2xl tracking-tight">16:00 – Partenza al Ufficio</h3>
+                            <p class="opacity-60 mt-2 leading-relaxed font-light text-lg">Gemeinsamer Start am Office. Die Dienstwagen-Flotte setzt sich in Bewegung Richtung Soběšice.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start border-l border-[#FFEDD8]/10 pl-8">
+                        <i data-lucide="map-pin" class="w-5 h-5 mt-1 opacity-50"></i>
+                        <div>
+                            <h3 class="font-serif text-2xl tracking-tight">Benvenuti</h3>
+                            <p class="opacity-60 mt-2 leading-relaxed font-light text-lg">Check-In und Zimmerverteilung. Die Villa gehört uns – Zeit für den ersten Vino in der Abendsonne.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-8 items-start border-l border-[#FFEDD8]/10 pl-8">
+                        <i data-lucide="utensils" class="w-5 h-5 mt-1 opacity-50"></i>
+                        <div>
+                            <h3 class="font-serif text-2xl tracking-tight">Cena e Convivialità</h3>
+                            <p class="opacity-60 mt-2 leading-relaxed font-light text-lg">Wir entfachen das Grillfeuer, bereiten Salate zu und stoßen auf ein legendäres Wochenende an.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-{/* Content Box */}
-<div className="mt-20 bg-[#1a0101]/60 border border-[#FFEDD8]/5 p-8 md:p-24 mb-24 shadow-2xl backdrop-blur-md"> <div className="mb-20 border-b border-[#FFEDD8]/10 pb-12">
-<h2 className="text-[#FFEDD8] font-serif text-4xl md:text-7xl mb-4 tracking-tighter">{days[activeDay].title}</h2>
-<p className="text-[#FFEDD8]/20 uppercase tracking-[0.5em] text-[10px] md:text-xs font-bold">{days[activeDay].subtitle}</p>
-</div>
+            <!-- SAMSTAG CONTENT -->
+            <div id="sabato" class="tab-content">
+                <div class="mb-16 border-b border-[#FFEDD8]/10 pb-12">
+                    <h2 class="font-serif text-5xl md:text-8xl mb-4 tracking-tighter text-[#FFEDD8]">Sabato</h2>
+                    <p class="opacity-20 uppercase tracking-[0.5em] text-[10px] font-black">Il Sabato Italiano • Gamification</p>
+                </div>
+                
+                <div class="space-y-12">
+                    <div class="bg-[#2a0202]/80 p-8 border border-white/5 text-center italic font-serif text-xl mb-12">
+                        "Pasta, Spritz und der unbedingte Wille zum Sieg."
+                    </div>
+                    
+                    <div class="grid gap-16">
+                        <div class="flex gap-10 items-start">
+                            <span class="font-serif text-4xl opacity-20 w-20 text-right shrink-0">10:00</span>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-[0.2em]">Briefing & Cornetto</h4>
+                                <p class="opacity-60 font-light mt-2 text-lg">Vergabe der Secret Missions. Ab jetzt zählt nur noch Diskretion und Strategie.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-10 items-start">
+                            <span class="font-serif text-4xl opacity-20 w-20 text-right shrink-0">12:00</span>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-[0.2em]">Lo Scatto Mentale</h4>
+                                <p class="opacity-60 font-light mt-2 text-lg">Intellektuelle Duelle und taktische Herausforderungen um Prestige-Punkte.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-10 items-start">
+                            <span class="font-serif text-4xl opacity-20 w-20 text-right shrink-0">14:30</span>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-[0.2em]">Olimpiadi della Birra</h4>
+                                <p class="opacity-60 font-light mt-2 text-lg">Aperitivo im Garten. Flunkyball mit italienischer Raffinesse und kühlem Moretti.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-10 items-start">
+                            <span class="font-serif text-4xl opacity-20 w-20 text-right shrink-0">18:00</span>
+                            <div>
+                                <h4 class="font-bold uppercase tracking-[0.2em]">Gran Gala di Pasta</h4>
+                                <p class="opacity-60 font-light mt-2 text-lg">Siegerehrung, frische Pasta, Vino und die Nacht zu Italo-Beats feiern.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-{days[activeDay].content}
+            <!-- SONNTAG CONTENT -->
+            <div id="domenica" class="tab-content">
+                <div class="mb-16 border-b border-[#FFEDD8]/10 pb-12 text-center">
+                    <h2 class="font-serif text-5xl md:text-8xl mb-4 tracking-tighter text-[#FFEDD8]">Domenica</h2>
+                    <p class="opacity-20 uppercase tracking-[0.5em] text-[10px] font-black">La Partenza • Rückreise</p>
+                </div>
+                <div class="text-center py-20">
+                    <i data-lucide="coffee" class="w-16 h-16 mx-auto mb-8 opacity-20"></i>
+                    <h3 class="font-serif text-4xl mb-6 text-[#FFEDD8]">Saluti</h3>
+                    <p class="opacity-60 max-w-lg mx-auto leading-relaxed font-light text-xl">
+                        Ein letzter Espresso, ein Blick zurück auf das Erlebte. Gegen Mittag treten wir gemeinsam die Heimreise an.
+                    </p>
+                </div>
+            </div>
 
-{/* Footer Info */}
-<div className="mt-24 pt-12 border-t border-[#FFEDD8]/5 flex flex-col md:flex-row items-center gap-6"> <div className="flex items-center gap-6 text-[#FFEDD8]/40 italic text-sm"> <Users size={16} className="text-[#FFEDD8]/20" />
-<span>Attenzione: Allergien oder kulinarische Wünsche bitte zeitnah bei der Organisation melden.</span> </div> </div> </div> </div>
+            <!-- Info Box -->
+            <div class="mt-24 pt-12 border-t border-[#FFEDD8]/10 flex flex-col md:flex-row items-center gap-6 opacity-40 italic text-sm font-light">
+                <i data-lucide="info" class="w-4 h-4 shrink-0"></i>
+                <span>Wünsche bezüglich Allergien oder Kulinarik bitte zeitnah dem Team mitteilen.</span>
+            </div>
+        </div>
+    </div>
 
-{/* Page Footer */}
-<footer className="pb-20 text-center">
-<div className="flex justify-center items-center gap-10 mb-8 opacity-10"> <div className="h-px w-20 bg-[#FFEDD8]" /> <span className="text-[#FFEDD8] font-serif italic text-2xl">Sprezzatura</span> <div className="h-px w-20 bg-[#FFEDD8]" /> </div> <p className="text-[#FFEDD8]/10 text-[8px] md:text-[10px] uppercase tracking-[1.2em] font-bold"> Tschechien • Soběšice • MMXXVI </p> </footer> </div> ); };
+    <!-- Page Footer -->
+    <footer class="pb-24 text-center">
+        <div class="flex justify-center items-center gap-12 mb-10 opacity-10">
+            <div class="h-[1px] w-20 bg-[#FFEDD8]"></div>
+            <span class="font-serif italic text-3xl">Sprezzatura</span>
+            <div class="h-[1px] w-20 bg-[#FFEDD8]"></div>
+        </div>
+        <p class="opacity-10 text-[10px] uppercase tracking-[1.4em] font-bold">
+            Soběšice • MMXXVI
+        </p>
+    </footer>
 
-export default App;
+    <script>
+        // Icons laden
+        lucide.createIcons();
+
+        // Einfache Tab-Steuerung
+        function showTab(id) {
+            // Alle Sektionen verstecken
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Alle Buttons zurücksetzen
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('active');
+                el.classList.add('text-[#FFEDD8]');
+                el.classList.add('hover:bg-[#4a0404]');
+            });
+            
+            // Aktive Sektion zeigen
+            document.getElementById(id).classList.add('active');
+            
+            // Aktiven Button stylen
+            const activeBtn = document.getElementById('btn-' + id);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-[#FFEDD8]');
+            activeBtn.classList.remove('hover:bg-[#4a0404]');
+
+            // Leichtes Scrollen zum Content für Mobile
+            window.scrollTo({ top: window.innerHeight * 0.4, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
